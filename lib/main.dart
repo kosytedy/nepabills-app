@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:nepabills/pages/first_page.dart';
-import 'package:nepabills/pages/fourth_page.dart';
-import 'package:nepabills/pages/second_page.dart';
-import 'package:nepabills/pages/third_page.dart';
+import 'package:nepabills/pages/account.dart';
+import 'package:nepabills/pages/contact.dart';
+import 'package:nepabills/pages/meter_info.dart';
+import 'package:nepabills/pages/pay_bill.dart';
+import 'package:nepabills/pages/payment_info.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,9 +16,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final themeColor = Colors.white;
-  final counterThemeColor = const Color(0xFF1C233F);
-  Widget _showPage = FirstPage();
-  int pageIndex = 0;
+  final counterThemeColor = Color(0xFF1C233F);
+  Widget _showPage = PayBillPage();
+  int pageIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +29,25 @@ class _MyAppState extends State<MyApp> {
         primaryColor: counterThemeColor,
         backgroundColor: themeColor,
       ),
-      home: defaultPage(),
+      home: displayPage(),
     );
   }
 
-  Widget defaultPage() {
+  Widget displayPage() {
     return Builder(
       builder: (context) => Scaffold(
+            body: _showPage,
             backgroundColor: themeColor,
             bottomNavigationBar: CurvedNavigationBar(
+              //buttonBackgroundColor: Colors.yellow[800],
               index: pageIndex,
-              backgroundColor: themeColor,
+              backgroundColor: Colors.transparent,
               items: <Widget>[
-                Icon(Icons.add, size: 30, color: themeColor,),
-                Icon(Icons.list, size: 30, color: themeColor,),
-                Icon(Icons.compare_arrows, size: 30, color: themeColor,),
-                Icon(Icons.add, size: 30, color: themeColor, ),
+                Icon(FontAwesomeIcons.addressCard, size: 30, color: themeColor,),
+                Icon(FontAwesomeIcons.exchangeAlt, size: 30, color: themeColor,),
+                Icon(FontAwesomeIcons.handHoldingUsd, size: 30, color: themeColor,),
+                Icon(FontAwesomeIcons.userTie, size: 30, color: themeColor, ),
+                Icon(FontAwesomeIcons.infoCircle, size: 30, color: themeColor, ),
               ],
               onTap: (index) {
                 setState(() {
@@ -51,9 +56,8 @@ class _MyAppState extends State<MyApp> {
                 });
               },
               color: counterThemeColor,
-              height: 60,
+              height: 65,
             ),
-            body: _showPage,
           ),
     );
   }
@@ -62,19 +66,19 @@ class _MyAppState extends State<MyApp> {
     Widget page;
     switch (index) {
       case 0:
-        page = FirstPage();
+        page = MeterInfoPage();
         break;
       case 1:
-        page = SecondPage();
+        page = PayemntInfoPage();
         break;
       case 2:
-        page = ThirdPage();
+        page = PayBillPage();
         break;
       case 3:
-        page = FourthPage();
+        page = AccountPage();
         break;
       default:
-        page = FirstPage();
+        page = ContactPage();
     }
 
     return page;

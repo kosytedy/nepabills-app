@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=C:\flutter
-FLUTTER_APPLICATION_PATH=C:\Users\Admin\Desktop\Flutter projects\nepabills-app\nepabills
+FLUTTER_APPLICATION_PATH=C:\Users\Admin\Desktop\Flutter projects\nepabills-app
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build\ios
